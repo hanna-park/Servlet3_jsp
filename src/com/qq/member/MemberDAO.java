@@ -8,7 +8,7 @@ public class MemberDAO {
 	//insert
 	public int memberInsert(Connection con, MemberDTO memberDTO) throws Exception {
 		int result = 0;
-		String sql = "insert into member values(?,?,?,?,?,?)";
+		String sql = "insert into member values(?,?,?,?,?,1)";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -17,7 +17,8 @@ public class MemberDAO {
 		st.setString(3, memberDTO.getName());
 		st.setString(4, memberDTO.getEmail());
 		st.setString(5, memberDTO.getPhone());
-		st.setInt(6, memberDTO.getGrade());
+		
+		result = st.executeUpdate();
 		
 		st.close();
 		con.close();

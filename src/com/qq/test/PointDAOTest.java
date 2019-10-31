@@ -12,10 +12,33 @@ import com.qq.point.PointDAO;
 import com.qq.point.PointDTO;
 import com.qq.util.DBConnector;
 
+import com.qq.member.MemberDTO;
+import com.qq.member.MemberDAO;
+
 public class PointDAOTest {
 	
 	
 	@Test
+	public void memberInsert() throws Exception{
+		MemberDAO memberDAO = new MemberDAO();
+		MemberDTO memberDTO = new MemberDTO();
+		
+		memberDTO.setId("qq");
+		memberDTO.setPw("QQQQ");
+		memberDTO.setName("qqrr");
+		memberDTO.setEmail("!@$!@$!@!@");
+		memberDTO.setPhone("12412412412");
+		memberDTO.setGrade(1);
+		
+		Connection con = DBConnector.getConnection();
+		int result =memberDAO.memberInsert(con, memberDTO);
+		
+		assertEquals(1,result);
+	}
+	
+	
+	
+	//@Test
 	public void updateTest() throws Exception{
 		PointDAO pointDAO = new PointDAO();
 		PointDTO pointDTO = new PointDTO();
@@ -93,7 +116,7 @@ public class PointDAOTest {
 		PointDAO pointDAO = new PointDAO();
 		Connection con = DBConnector.getConnection();
 		
-		int result=pointDAO.delete(con, 1256);
+		int result=pointDAO.delete(con, 26);
 		
 		//단정문
 		assertEquals(1,result);
