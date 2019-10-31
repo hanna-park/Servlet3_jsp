@@ -16,6 +16,7 @@
 </head>
 <body>
 
+		<%@include file ="../layout/nav.jsp" %>
 
 		<div class="container">
   					<h2>Member Join Form</h2>
